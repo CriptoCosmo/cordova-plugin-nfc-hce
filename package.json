@@ -1,0 +1,27 @@
+{
+  "name": "cordova-plugin-nfc-hce",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-nfc-hce",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "nfc",
+    "hce"
+  ],
+  "author": "@manza",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mario83/cordova-plugin-nfc-hce/issues"
+  },
+  "homepage": "https://github.com/mario83/cordova-plugin-nfc-hce#readme"
+}
