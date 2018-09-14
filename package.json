@@ -17,7 +17,7 @@
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git#dbd637fd0c9c097b1d6d6aafbf5856bbf2f607fa",
+  "_resolved": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git#eba1800883f1bdd8be02220c7269070d1bb72166",
   "_spec": "https://github.com/mario83/cordova-plugin-nfc-hce",
   "_where": "C:\\Users\\user1\\Desktop\\bank-notes\\Ionic\\banknotespremium",
   "author": {

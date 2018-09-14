@@ -1,4 +1,4 @@
-package cordova.plugin.nfc.hce;
+package cordova.plugin.nfc;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;

@@ -14,7 +14,7 @@ var nfc = {
 		exec(null, null, "NfcPlugin", "switchToNFCSettings", []);
 	},
 
-    isNFCPresent = function(successCallback, errorCallback) {
+    isNFCPresent: function(successCallback, errorCallback) {
         exec(successCallback, errorCallback, "NfcPlugin", "isNFCPresent", []);
     },
 
@@ -26,7 +26,7 @@ var nfc = {
 		exec(successCallback, errorCallback, "NfcPlugin", "isNFCAvailable", []);
     },
     
-    onNFCStateChange: function(){},
+    onNFCStateChange: function(){}
 };
 
 module.exports = nfc;
