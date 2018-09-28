@@ -2,6 +2,18 @@ var exec = require('cordova/exec');
 
 var nfc = {
 
+    sendPayload: function(payload, readCallback, errorCallback) {
+        cordova.exec(readCallback, errorCallback, 'NfcPlugin', 'sendPayload', [payload]);
+    },
+
+    readHceWithIntent: function(aid, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, 'NfcPlugin', 'readHceWithIntent', [aid]);
+    },
+
+    removeIntent: function(successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, 'NfcPlugin', 'removeIntent', []);
+    },
+
     readHce: function(aid, readCallback, errorCallback) {
         cordova.exec(readCallback, errorCallback, 'NfcPlugin', 'readHce', [aid]);
     },
@@ -26,7 +38,8 @@ var nfc = {
 		exec(successCallback, errorCallback, "NfcPlugin", "isNFCAvailable", []);
     },
     
-    onNFCStateChange: function(){}
+    onNFCStateChange: function(){},
+    onTagDiscoveredIntent: function(){}
 };
 
 module.exports = nfc;
