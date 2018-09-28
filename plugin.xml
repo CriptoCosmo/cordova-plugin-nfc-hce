@@ -10,7 +10,12 @@
                 <param name="android-package" value="cordova.plugin.nfc.NfcPlugin" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/cordova/plugin/nfc/NfcPlugin.java" target-dir="src/cordova-plugin-nfc-hce/NfcPlugin" />
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.NFC"/>
+            <uses-feature android:name="android.hardware.nfc" android:required="false"/>
+        </config-file>
+
+        <source-file src="src/cordova/plugin/nfc/NfcPlugin.java" 
+            target-dir="src/cordova-plugin-nfc-hce/NfcPlugin" />
     </platform>
 </plugin>
