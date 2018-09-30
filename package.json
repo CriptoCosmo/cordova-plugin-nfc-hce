@@ -1,0 +1,52 @@
+{
+  "_from": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git",
+  "_id": "cordova-plugin-nfc-hce@0.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-nfc-hce",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/mario83/cordova-plugin-nfc-hce",
+    "rawSpec": "https://github.com/mario83/cordova-plugin-nfc-hce",
+    "saveSpec": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git",
+    "fetchSpec": "https://github.com/mario83/cordova-plugin-nfc-hce.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git#eba1800883f1bdd8be02220c7269070d1bb72166",
+  "_spec": "https://github.com/mario83/cordova-plugin-nfc-hce",
+  "_where": "C:\\Users\\user1\\Desktop\\bank-notes\\Ionic\\banknotespremium",
+  "author": {
+    "name": "@manza"
+  },
+  "bugs": {
+    "url": "https://github.com/mario83/cordova-plugin-nfc-hce/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-nfc-hce",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "- Android",
+  "homepage": "https://github.com/mario83/cordova-plugin-nfc-hce#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "nfc",
+    "hce"
+  ],
+  "license": "ISC",
+  "name": "cordova-plugin-nfc-hce",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mario83/cordova-plugin-nfc-hce.git"
+  },
+  "version": "0.0.1"
+}
