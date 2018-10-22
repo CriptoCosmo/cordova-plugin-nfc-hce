@@ -39,7 +39,8 @@ var nfc = {
     },
     
     onNFCStateChange: function(){},
-    onTagDiscoveredIntent: function(){}
+    onTagDiscoveredIntent: function(){},
+    onCallStateChange: function(){}
 };
 
 module.exports = nfc;

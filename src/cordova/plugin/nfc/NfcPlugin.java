@@ -21,6 +21,8 @@ import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.nfc.tech.TagTechnology;
 import android.provider.Settings;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.os.Bundle;
 
@@ -46,7 +48,8 @@ public class NfcPlugin extends CordovaPlugin {
     public static final String TAG = "nfcHcePlugin";
 
     private CallbackContext _callbackContext;
-    private CordovaInterface _cordova;
+    private static CordovaInterface _cordova;
+    private static CordovaWebView _webView;
     public Context applicationContext;
     public static NfcManager nfcManager;
     public static NfcPlugin instance = null;
@@ -96,6 +99,7 @@ public class NfcPlugin extends CordovaPlugin {
 
         instance = this;
         _cordova = cordova;
+        _webView = webView;
         applicationContext = cordova.getActivity().getApplicationContext();
         _nfcAdapter = NfcAdapter.getDefaultAdapter(cordova.getActivity());
 
@@ -237,13 +241,15 @@ public class NfcPlugin extends CordovaPlugin {
         return state;
     }
 
-    public void executePluginJavascript(final String jsString) {
-        _cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                webView.loadUrl("javascript:cordova.plugins.NfcPlugin." + jsString);
-            }
-        });
+    public static void executePluginJavascript(final String jsString) {
+        if (_cordova != null) {
+            _cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    _webView.loadUrl("javascript:cordova.plugins.NfcPlugin." + jsString);
+                }
+            });
+        }
     }
 
     private void readHceWithIntent(CallbackContext callbackContext) {
@@ -504,6 +510,7 @@ public class NfcPlugin extends CordovaPlugin {
         public void onReceive(Context context, Intent intent) {
             try {
                 final String action = intent.getAction();
+                Log.v(TAG, "action " + action);
                 if (instance != null && action.equals(NfcAdapter.ACTION_ADAPTER_STATE_CHANGED)) {
 
                     Log.v(TAG, "onReceiveNFCStateChange");
@@ -515,6 +522,37 @@ public class NfcPlugin extends CordovaPlugin {
             }
         }
     };
+
+    public static class CallStateListener extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                final String action = intent.getAction();
+                Log.v(TAG, "CallStateListener " + action);
+                // TELEPHONY MANAGER class object to register one listner
+                TelephonyManager tmgr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
+                // Create Listner
+                MyPhoneStateListener PhoneListener = new MyPhoneStateListener();
+
+                // Register listener for LISTEN_CALL_STATE
+                tmgr.listen(PhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+
+            } catch (Exception e) {
+                Log.e(TAG, "Error receiving NFC state change: " + e.toString());
+            }
+        }
+    }
+
+    private static class MyPhoneStateListener extends PhoneStateListener {
+
+        public void onCallStateChanged(int state, String incomingNumber) {
+
+            Log.v("MyPhoneListener", state + "   incoming no:" + incomingNumber);
+
+            executePluginJavascript("onCallStateChange(\"" + state + "\",\"" + incomingNumber + "\");");
+        }
+    }
 
     private String readText(NdefRecord record) {
         /*
